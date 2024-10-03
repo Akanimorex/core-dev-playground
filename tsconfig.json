@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "useUnknownInCatchVariables": false,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": ["components/core/*"],
+      "@the-graph/*": ["components/the_graph/*"]
+    },
+    "incremental": true
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.js"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,13 @@
+modules = ["nodejs-20"]
+run = "npm install --legacy-peer-deps --force && npm run dev "
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "npm install --legacy-peer-deps --force &&  npm run dev"]
+build = ["sh", "-c", "npm run build --legacy-peer-deps "]
+
+[[ports]]
+localPort = 3000
+externalPort = 80
