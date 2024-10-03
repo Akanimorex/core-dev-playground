@@ -24,7 +24,7 @@ Then clone the repo, install dependencies and start the server by running all th
 
 ```text
 git clone https://github.com/coredao-org/core-dev-playground.git
-cd CorePlayground
+cd core-dev-playground
 yarn
 yarn dev
 ```
