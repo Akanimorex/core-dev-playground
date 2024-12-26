@@ -98,7 +98,7 @@ module.exports = {
 
 # 🌐 The HelloWorld Solidity contract
 
-- One of the most basic, non-trivial, types of smart contract is a **Hello World contract**. Create a file `HelloWorld.sol` under the contracts folder `./hello-world-dapp/contracts/HelloWorld.sol` and paste the below HelloWorld Contract
+- One of the most basic, non-trivial, types of smart contract is a **Hello World contract**. Create a file named `HelloWorld.sol` inside the contracts folder of your project (i.e., `./hello-world-dapp/contracts/HelloWorld.sol`) and insert the following HelloWorld contract code.
 
 ```solidity
 // SPDX-License-Identifier: MIT

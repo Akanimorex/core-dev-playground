@@ -7,7 +7,7 @@ In ethers, a **provider** is a read-only abstraction to access the blockchain da
 The ethers library has some helpful functions that will make this a snap! Read the ethers.js[ API documentation](https://docs.ethers.io/v5/api/) to learn more about its various functions.
 
 {% hint style="info" %}
-_It is important to note that throughout the Pathway, we will refer to the_ ethers.js _library only as "_ethers_".
+_It is important to note that throughout the Pathway, we will refer to the_ ethers.js _library only as "\_ethers_".
 {% endhint %}
 
 ---
