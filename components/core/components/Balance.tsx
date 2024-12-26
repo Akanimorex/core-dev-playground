@@ -48,7 +48,7 @@ const Balance = () => {
 
   return (
     <Col>
-      {balance && (
+      {balance > 0 && (
         <Confetti numberOfPieces={500} tweenDuration={1000} gravity={0.05} />
       )}
       <Space direction="vertical" style={{width: '100%'}} size="large">

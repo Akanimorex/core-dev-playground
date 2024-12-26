@@ -52,9 +52,12 @@ const Deploy = () => {
         <Confetti numberOfPieces={500} tweenDuration={1000} gravity={0.05} />
       )}
       <Space direction="vertical" size="large">
-        <Text>
-          Paste the <Text strong>contract address</Text> generated after the
-          deployment:
+        <Text style={{color: 'white'}}>
+          Paste the{' '}
+          <Text style={{color: 'white', fontWeight: 'bold'}}>
+            contract address
+          </Text>{' '}
+          generated after the deployment:
         </Text>
         <Input
           placeholder="Enter the program address"
