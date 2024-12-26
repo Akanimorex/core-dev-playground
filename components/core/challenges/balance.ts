@@ -13,6 +13,9 @@ const getBalance = async (address: string) => {
     if (!balance) {
       throw new Error('Please complete the code');
     }
+    if (balance.isZero()) {
+      throw new Error('Get the testnet tokens from the faucet');
+    }
     return {
       balance: balance.toString(),
     };
