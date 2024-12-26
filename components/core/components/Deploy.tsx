@@ -1,6 +1,7 @@
 import {PoweroffOutlined} from '@ant-design/icons';
 import {Alert, Button, Col, Input, Space, Typography} from 'antd';
 import {useEffect, useState} from 'react';
+import Confetti from 'react-confetti';
 
 import {deploy} from 'components/core/challenges';
 import {useGlobalState} from 'context';
@@ -47,6 +48,9 @@ const Deploy = () => {
 
   return (
     <Col>
+      {isDeployed && (
+        <Confetti numberOfPieces={500} tweenDuration={1000} gravity={0.05} />
+      )}
       <Space direction="vertical" size="large">
         <Text>
           Paste the <Text strong>contract address</Text> generated after the
