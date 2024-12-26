@@ -9,9 +9,11 @@ const setValue = async (contractAddress: string, value: number) => {
   try {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
-    // try to figure out the expected parameters
+
+    // TODO: Instantiate the contract with the correct ABI and contract address
     const contract = new ethers.Contract(undefined);
-    // try to figure out the expected method
+
+    // TODO: Call the expected method (setGreeting) with the value argument
     const transactionResult = undefined;
     const receipt = await transactionResult.wait();
     return {hash: receipt.transactionHash};

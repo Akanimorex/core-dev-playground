@@ -6,13 +6,14 @@ declare let window: {
 
 const connect = async () => {
   try {
+    // TODO: Instantiate the provider using MetaMask's window.ethereum
     const provider = undefined;
 
     if (provider) {
-      // Request the currently selected accounts in MetaMask
+      // TODO: Request the currently selected accounts in MetaMask
       const accounts = undefined;
 
-      // Make sure you have accounts and get the first one (currently selected)
+      // TODO: Make sure you have accounts and get the first one (currently selected)
       if (accounts.length > 0) {
         const address = undefined;
         return {

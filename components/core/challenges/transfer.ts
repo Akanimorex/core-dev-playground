@@ -19,9 +19,13 @@ const transfer = async () => {
       parseInt(currentGasPrice.toString()),
     );
 
+    // TODO: Define the transaction object with the necessary parameters (to, value, gasLimit, etc.)
     const transaction = undefined;
 
+    // TODO: Send the transaction and get the transaction hash
     const hash = undefined;
+
+    // Wait for the transaction to be mined and get the receipt
     const receipt = await hash.wait();
     return {hash: receipt.transactionHash};
   } catch (error) {
