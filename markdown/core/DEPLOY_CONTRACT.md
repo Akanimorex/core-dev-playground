@@ -4,15 +4,15 @@ We can use [HardHat](https://hardhat.org) to ease development and deployment of 
 
 # Pre-requisite
 
-* IDE of your choice (like VS Code).
-* [Git](https://git-scm.com/) v2.44.0
-* [Node.js](https://nodejs.org/en) v20.11.1
-* [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) v10.2.4
-* [Hardhat](https://hardhat.org/hardhat-runner/docs/getting-started#installation) v2.22.7
-* [MetaMask Web Wallet Extension](https://metamask.io/download/)
-* A Metamask account with test CORE Tokens, details [here](https://docs.coredao.org/docs/Dev-Guide/core-testnet-wallet-config).
+- IDE of your choice (like VS Code).
+- [Git](https://git-scm.com/) v2.44.0
+- [Node.js](https://nodejs.org/en) v20.11.1
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) v10.2.4
+- [Hardhat](https://hardhat.org/hardhat-runner/docs/getting-started#installation) v2.22.7
+- [MetaMask Web Wallet Extension](https://metamask.io/download/)
+- A Metamask account with test CORE Tokens, details [here](https://docs.coredao.org/docs/Dev-Guide/core-testnet-wallet-config).
 
-# Setup Project 
+# Setup Project
 
 1. Create a new directory for the project and navigate into it
 
@@ -20,24 +20,30 @@ We can use [HardHat](https://hardhat.org) to ease development and deployment of 
 mkdir hello-world-dapp
 cd hello-world-dapp
 ```
+
 2. Install Hardhat
 
 ```bash
 npm init --yes
 npm install --save-dev hardhat
 ```
+
 3. Initialize Hardhat project by running the following command
 
 ```bash
 npx hardhat init
 ```
 
+![hardhat initialization](/hardhat_init.png)
+
 4. Install and configure MetaMask Chrome Extension to use with Core Testnet. Refer [here](https://docs.coredao.org/docs/Dev-Guide/core-testnet-wallet-config) for a detailed guide.
 
-5. rename the file **`contracts/core/HelloWorld/secret.json.example`** to **`secret.json`** and store the private key of your MetaMask wallet in it. Refer [here](https://support.metamask.io/managing-my-wallet/secret-recovery-phrase-and-private-keys/how-to-export-an-accounts-private-key/) for details on how to get MetaMask account's private key.
+5. create a file **`./hello-world-dapp/secret.json`** and store the private key of your MetaMask wallet in it. Refer [here](https://support.metamask.io/managing-my-wallet/secret-recovery-phrase-and-private-keys/how-to-export-an-accounts-private-key/) for details on how to get MetaMask account's private key.
 
 ```json
-{"PrivateKey":"you private key, do not leak this file, do keep it absolutely safe"}
+{
+  "PrivateKey": "you private key, do not leak this file, do keep it absolutely safe"
+}
 ```
 
 {% hint style="warning" %}
@@ -49,51 +55,50 @@ Do not forget to add this file to the `.gitignore` file in the root folder of yo
 - Copy the following into your `hardhat.config.js` file
 
 ```js
-require("@nomicfoundation/hardhat-toolbox");
+require('@nomicfoundation/hardhat-toolbox');
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
-const { PrivateKey } = require('./secret.json');
+const {PrivateKey} = require('./secret.json');
 module.exports = {
   defaultNetwork: 'core_testnet',
 
   networks: {
-     hardhat: {
-     },
-     core_testnet: {
-        url: 'https://rpc.test.btcs.network',
-        accounts: [PrivateKey],
-        chainId: 1115,
-     }
+    hardhat: {},
+    core_testnet: {
+      url: 'https://rpc.test.btcs.network',
+      accounts: [PrivateKey],
+      chainId: 1115,
+    },
   },
   solidity: {
-     compilers: [
-       {
-          version: '0.8.26',
-          settings: {
-             evmVersion: 'paris',
-             optimizer: {
-                enabled: true,
-                runs: 200,
-             },
+    compilers: [
+      {
+        version: '0.8.26',
+        settings: {
+          evmVersion: 'paris',
+          optimizer: {
+            enabled: true,
+            runs: 200,
           },
-       },
-     ],
+        },
+      },
+    ],
   },
   paths: {
-     sources: './contracts',
-     cache: './cache',
-     artifacts: './artifacts',
+    sources: './contracts',
+    cache: './cache',
+    artifacts: './artifacts',
   },
   mocha: {
-     timeout: 60000,
+    timeout: 60000,
   },
 };
 ```
 
 # 🌐 The HelloWorld Solidity contract
 
-- One of the most basic, non-trivial, types of smart contract is a **Hello World contract**.
+- One of the most basic, non-trivial, types of smart contract is a **Hello World contract**. Create a file named `HelloWorld.sol` inside the contracts folder of your project (i.e., `./hello-world-dapp/contracts/HelloWorld.sol`) and insert the following HelloWorld contract code.
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -118,7 +123,7 @@ contract HelloWorld {
         * @return success Returns bool value (True or False) to indicate if save was successful or not
         */
     function setGreeting(string memory _name) public returns(bool success){
-        require(bytes(_name).length > 0);
+        require(bytes(_name).length > 0, "Greeting cannot be empty");
         greet= _name;
         return true;
     }
@@ -171,39 +176,39 @@ Because deployed bytecode is immutable, it is best to work with security and bes
 In the `test` folder, `HelloWorld.js` is the test script to test the `HelloWorld` smart contract before deploying it.
 
 ```javascript
-const { expect } = require("chai");
+const {expect} = require('chai');
 
-describe("HelloWorld contract", function () {
+describe('HelloWorld contract', function () {
   let HelloWorld;
   let helloWorld;
   let owner;
 
   beforeEach(async function () {
-    HelloWorld = await ethers.getContractFactory("HelloWorld");
+    HelloWorld = await ethers.getContractFactory('HelloWorld');
     [owner] = await ethers.getSigners();
     helloWorld = await HelloWorld.deploy();
     await helloWorld.waitForDeployment(); // Correct way to ensure contract is deployed
   });
 
-  it("Should return the initial greeting message", async function () {
-    expect(await helloWorld.getGreeting()).to.equal("Hello, World");
+  it('Should return the initial greeting message', async function () {
+    expect(await helloWorld.getGreeting()).to.equal('Hello, World');
   });
 
-  it("Should update the greeting message", async function () {
-    const tx = await helloWorld.setGreeting("Hardhat");
+  it('Should update the greeting message', async function () {
+    const tx = await helloWorld.setGreeting('Hardhat');
     await tx.wait(); // Wait for the transaction to be mined
-    expect(await helloWorld.getGreeting()).to.equal("Hello, Hardhat");
+    expect(await helloWorld.getGreeting()).to.equal('Hello, Hardhat');
   });
 
-  it("Should reject empty greetings", async function () {
-    await expect(helloWorld.setGreeting(""))
-      .to.be.revertedWith("Greeting cannot be empty");
+  it('Should reject empty greetings', async function () {
+    await expect(helloWorld.setGreeting('')).to.be.revertedWith(
+      'Greeting cannot be empty',
+    );
   });
 });
-
 ```
 
-Run the command `npx hardhat test` to run the test script. This will compile the contract before deploying it to the local Harhat and performing the tests. You should see similar output in your terminal:
+Run the command `npx hardhat test --network hardhat` to run the test script. This will compile the contract before deploying it to the local Hardhat and performing the tests. You should see similar output in your terminal:
 
 ```text
 
@@ -232,15 +237,44 @@ Compiling Solidity with Hardhat is a straightforward process, just make sure tha
 npx hardhat compile
 ```
 
+Create file under ignition Module `hello-world-dapp/ignition/modules/HelloWorld.js` and add the deployment script
+
+```js
+const {buildModule} = require('@nomicfoundation/hardhat-ignition/modules');
+
+module.exports = buildModule('HelloWorld', (m) => {
+  const helloWorld = m.contract('HelloWorld');
+
+  return {helloWorld};
+});
+```
+
 To deploy the HelloWorld contract to Core blockchain, run this command :
 
 ```text
-npx hardhat run scripts/deploy.js --network core_testnet
+npx hardhat ignition deploy ./ignition/modules/Helloworld.js --network core_testnet
 ```
 
 The flag `--network core_testnet` lets Hardhat know which network we want to deploy our smart contract to. The configuration for each network is set inside of `hardhat.config.js`.
 
 For the deployment to work, make sure there is a valid private key inside of the `secret.json` file, and that the account has some tCORE tokens. If you have followed the tutorial steps so far, these conditions should be satisfied.
+
+You should see similar output in your terminal:
+
+```text
+Hardhat Ignition 🚀
+
+Deploying [ HelloWorld ]
+
+Batch #1
+  Executed HelloWorld#HelloWorld
+
+[ HelloWorld ] successfully deployed 🚀
+
+Deployed Addresses
+
+HelloWorld#HelloWorld - 0xcontractAddress
+```
 
 ---
 
@@ -260,4 +294,4 @@ Once the contract is compiled and deployed, paste the contract address into the 
 
 # 🏁 Conclusion
 
-Truffle is only one of several different ways to deploy smart contracts on Core blockchain. It is also rssible to use the Ethereum [Remix IDE](https://remix.ethereum.org), or another smart contract development tool called [HardHat](https://hardhat.org). Now that we have a deployed and functioning smart contract on Core blockchain, let's interact with it!
+Hardhat is only one of several different ways to deploy smart contracts on Core blockchain. It is also rssible to use the Ethereum [Remix IDE](https://remix.ethereum.org), or another smart contract development tool called [Foundry](https://book.getfoundry.sh/). Now that we have a deployed and functioning smart contract on Core blockchain, let's interact with it!

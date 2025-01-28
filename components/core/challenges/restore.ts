@@ -2,7 +2,10 @@ import {ethers} from 'ethers';
 
 const restore = (mnemonic: string, address?: string) => {
   try {
+    // TODO: Restore the wallet using the mnemonic
     const wallet = undefined;
+
+    //Check if the restored wallet address matches the provided address
     if (wallet.address === address) {
       const restoredAddress = wallet.address;
       return {

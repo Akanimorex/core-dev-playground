@@ -1,6 +1,7 @@
 import {PoweroffOutlined} from '@ant-design/icons';
 import {Alert, Button, Col, Space, Typography} from 'antd';
 import {useEffect, useState} from 'react';
+import Confetti from 'react-confetti';
 
 import {getBalance} from 'components/core/challenges';
 import {getCoreFaucetURL} from 'components/core/lib';
@@ -47,6 +48,9 @@ const Balance = () => {
 
   return (
     <Col>
+      {balance > 0 && (
+        <Confetti numberOfPieces={500} tweenDuration={1000} gravity={0.05} />
+      )}
       <Space direction="vertical" style={{width: '100%'}} size="large">
         <Alert
           message={

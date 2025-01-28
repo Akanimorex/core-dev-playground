@@ -40,11 +40,13 @@ Still not sure how to do this? No problem! The solution is below so you don't ge
 
 # 😅 Solution
 
-Import the HelloWorld ABI using `import HelloWorldJson from './HelloWorld.json';`. You can find the ABI after the contract has been deployed using Hardaht in the `artifacts/contracts/HelloWorld.sol/HelloWorld.json`. Copy this into the `components/core/challenges` folder.
+Import the HelloWorld ABI using `import HelloWorldJson from './HelloWorld.json';`. You can find the ABI after the contract has been deployed using Hardaht in the `artifacts/contracts/HelloWorld.sol/HelloWorld.json`.
+
+The ABI has already been copied to the `components/core/challenges` folder.Just import the ABI from there to interact with the contract in your app.
 
 ```typescript
 // solution
-import { ethers } from 'ethers';
+import {ethers} from 'ethers';
 import HelloWorldJson from './HelloWorld.json';
 
 declare let window: {

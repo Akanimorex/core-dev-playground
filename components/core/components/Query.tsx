@@ -2,6 +2,7 @@ import {PoweroffOutlined} from '@ant-design/icons';
 import {Alert, Button, Col, Space} from 'antd';
 import dynamic from 'next/dynamic';
 import {useEffect, useState} from 'react';
+import Confetti from 'react-confetti';
 const DynamicReactJson = dynamic(() => import('react-json-view'), {ssr: false});
 
 import {query} from 'components/core/challenges';
@@ -38,6 +39,9 @@ const Query = () => {
 
   return (
     <Col>
+      {queryData && (
+        <Confetti numberOfPieces={500} tweenDuration={1000} gravity={0.05} />
+      )}
       <Space direction="vertical" size="large">
         <Space direction="vertical" style={{overflow: 'hidden'}} size="large">
           <Button

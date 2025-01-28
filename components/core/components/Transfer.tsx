@@ -1,6 +1,7 @@
 import {PoweroffOutlined} from '@ant-design/icons';
 import {Alert, Button, Col, Space, Typography} from 'antd';
 import {useEffect, useState} from 'react';
+import Confetti from 'react-confetti';
 
 import {transfer} from 'components/core/challenges';
 import {getCoreTxExplorerURL} from 'components/core/lib';
@@ -38,6 +39,9 @@ const Transfer = () => {
 
   return (
     <Col>
+      {hash && (
+        <Confetti numberOfPieces={500} tweenDuration={1000} gravity={0.05} />
+      )}
       <Space direction="vertical" size="large">
         <Button
           type="primary"

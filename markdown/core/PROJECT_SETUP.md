@@ -41,7 +41,7 @@ We use the testnet for development before moving into production on the main net
 
 # 🧩 API keys
 
-If you're using a private infractructure provider, you may require an API key to access nodes via their endpoints. Remember to have your API key saved in `/learn-web3-dapp/.env.local`. You can then reference your API key in the pathway code via `process.env.<SOME_VARIABLE_NAME>`.
+If you're using a private infractructure provider, you may require an API key to access nodes via their endpoints. Remember to have your API key saved in `/core-dev-playground/.env.local`. You can then reference your API key in the pathway code via `process.env.<SOME_VARIABLE_NAME>`.
 
 If you are using the [Core's default public endpoints](https://docs.coredao.org/docs/Dev-Guide/rpc-list) you do not require an API key, and you can connect directly without any additions to `.env.local`.
 
