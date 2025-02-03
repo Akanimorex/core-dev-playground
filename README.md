@@ -6,7 +6,7 @@ It's a Next.js app that uses React, TypeScript and Solidity based smart contract
 
 The Core Dev Playground covers the fundamentals of setting up Web3 wallets for use with Core blockchain and also guides you through using the various blockchain JavaScript SDKs to interact with the Core network. You will also further learn to create, test, and deploy smart contracts and read and write data to them.
 
-By following all of the lessons in the Core Dev Playground, at teh end you will be able to build and run your dApps on Core. 
+By following all of the lessons in the Core Dev Playground, at the end you will be able to build and run your dApps on Core. 
 
 # 🧑‍💻 Get Started
 
