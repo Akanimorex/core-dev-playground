@@ -16,3 +16,9 @@ Here's a quick recap of what we covered:
 # Claim your Core Developer NFT
 
 ✅ To receive the Core Developer NFT for successfully completing all of the lessons submit your wallet address by filling up **this form**.
+
+## Mint an NFT
+
+Click the button below to mint an NFT.
+
+[MINT_BUTTON]
