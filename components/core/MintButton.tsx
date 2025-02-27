@@ -10,7 +10,7 @@ declare let window: {
   };
 
 const MintButton = () => {
-    const contractAddress = "0x72d321681d588AA0d44354D860A7E6f960F722E5";
+    const contractAddress = "0x1525fCde51407d7c7551b11ee3884d6D48606F17";
     const [fetching, setFetching] = useState<boolean>(false);
   const [txHash, setTxHash] = useState<string | null>(null);
   const [error, setError] = useState<string | undefined>(undefined);
@@ -43,7 +43,7 @@ const MintButton = () => {
             const contract = new ethers.Contract(contractAddress, abi, signer);
       
             // Call the mintCertificate function
-            const transactionResult = await contract.mintCertificate({
+            const transactionResult = await contract.mint({
                 gasLimit: 500000, // Adjust as needed
             });
             alert("Transaction submitted. Waiting for confirmation...");
