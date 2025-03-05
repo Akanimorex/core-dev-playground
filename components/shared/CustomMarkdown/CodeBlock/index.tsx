@@ -7,12 +7,18 @@ const CodeBlock = ({
   codeStr,
   language,
   isSolution,
+  isComponent,
 }: {
   codeStr: any;
   language: any;
   isSolution: boolean;
+  isComponent?: boolean;
 }) => {
   const [showCode, setShowCode] = useState<boolean>(!isSolution);
+
+  if (isComponent) {
+    return <div dangerouslySetInnerHTML={{ __html: codeStr }} />;
+  }
 
   return (
     <RevealWrapper>
