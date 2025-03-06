@@ -50,7 +50,7 @@ const Transfer = () => {
           loading={fetching}
           size="large"
         >
-          Transfer 0.01 tCORE
+          Transfer 0.01 tCORE2
         </Button>
         {hash ? (
           <>

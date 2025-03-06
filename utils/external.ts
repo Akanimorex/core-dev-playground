@@ -18,7 +18,7 @@ export const getNodeURL = (
 const getTestnetNodeURL = (chain: CHAINS): string => {
   switch (chain) {
     case CHAINS.CORE:
-      return 'https://rpc.test.btcs.network';
+      return 'https://rpc.test2.btcs.network';
     default:
       return '';
   }

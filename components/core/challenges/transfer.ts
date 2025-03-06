@@ -6,7 +6,7 @@ declare let window: {
 
 // A random test's address
 const RECIPIENT = '0x2787D2ff0cc90907D84cBCE7459b4a1aF9c141CA';
-// 0.1 tCORE
+// 0.1 tCORE2
 const AMOUNT = '0.01';
 
 const transfer = async () => {

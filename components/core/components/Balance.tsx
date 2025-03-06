@@ -11,7 +11,7 @@ import {getInnerState} from 'utils/context';
 const {Text} = Typography;
 
 const DECIMAL_OFFSET = 10 ** 18;
-const TOKEN_SYMBOL = 'tCORE';
+const TOKEN_SYMBOL = 'tCORE2';
 
 const Balance = () => {
   const {state, dispatch} = useGlobalState();

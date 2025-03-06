@@ -4,11 +4,11 @@ Click on the icon in the upper-right corner of the page to copy the hexadecimal 
 
 ![click-to-copy-address](/click_to_copy.png)
 
-Visit [Core's official testnet faucet](https://scan.test.btcs.network/faucet) and paste the address from your selected account in Metamask into the text input. Click on **Get tCORE**. A popup confirms the transfer of tCORE tokens to your specified address. Remember, not to abuse the faucet or else you get blacklisted. You can only use faucet for one transaction per 24 hours.
+Visit [Core's official testnet faucet](https://scan.test2.btcs.network/faucet) and paste the address from your selected account in Metamask into the text input. Click on **Get tCORE2**. A popup confirms the transfer of tCORE2 tokens to your specified address. Remember, not to abuse the faucet or else you get blacklisted. You can only use faucet for one transaction per 24 hours.
 
 ![get-tokens-from-faucet](/get-tcore-from-core-faucet.png)
 
-Once this transaction is confirmed, you will have **1 tCORE** in your wallet on the Core blockchain TestNet!
+Once this transaction is confirmed, you will have **1 tCORE2** in your wallet on the Core blockchain TestNet!
 
 ---
 
