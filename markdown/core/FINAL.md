@@ -19,6 +19,5 @@ Here's a quick recap of what we covered:
 ## Mint an NFT
 ✅ To receive the Core Developer NFT for successfully completing all of the lessons .
 
-Click the button below to mint!.
 
 [MINT_BUTTON]

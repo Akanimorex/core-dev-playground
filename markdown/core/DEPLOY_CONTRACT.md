@@ -66,9 +66,9 @@ module.exports = {
   networks: {
     hardhat: {},
     core_testnet: {
-      url: 'https://rpc.test.btcs.network',
+      url: 'https://rpc.test2.btcs.network',
       accounts: [PrivateKey],
-      chainId: 1115,
+      chainId: 1114,
     },
   },
   solidity: {
@@ -76,7 +76,7 @@ module.exports = {
       {
         version: '0.8.26',
         settings: {
-          evmVersion: 'paris',
+          evmVersion: 'shanghai',
           optimizer: {
             enabled: true,
             runs: 200,
@@ -257,7 +257,7 @@ npx hardhat ignition deploy ./ignition/modules/Helloworld.js --network core_test
 
 The flag `--network core_testnet` lets Hardhat know which network we want to deploy our smart contract to. The configuration for each network is set inside of `hardhat.config.js`.
 
-For the deployment to work, make sure there is a valid private key inside of the `secret.json` file, and that the account has some tCORE tokens. If you have followed the tutorial steps so far, these conditions should be satisfied.
+For the deployment to work, make sure there is a valid private key inside of the `secret.json` file, and that the account has some tCORE2 tokens. If you have followed the tutorial steps so far, these conditions should be satisfied.
 
 You should see similar output in your terminal:
 

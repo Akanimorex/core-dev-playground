@@ -27,10 +27,10 @@ The first task is to connect to the Core blockchain TestNet by adding it to the 
 - Scroll down and click on "Custom RPC"
 - Fill in the form:
   - Network Name: `Core Blockchain TestNet`
-  - New RPC URL: `https://rpc.test.btcs.network`
-  - Chain ID: `1115`
-  - Currency Symbol: `tCORE`
-  - Block Explorer URL: `https://scan.test.btcs.network`
+  - New RPC URL: `https://rpc.test2.btcs.network`
+  - Chain ID: `1114`
+  - Currency Symbol: `tCORE2`
+  - Block Explorer URL: `https://scan.test2.btcs.network`
 - Double check the information, then click on the Save button.
 
 ![add-core-testnet-to-metamask](/add_core_testnet.png)
