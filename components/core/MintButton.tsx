@@ -44,62 +44,62 @@ const MintButton = () => {
 
         
 
-        try {
-            // Request account access if needed
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            await provider.send('eth_requestAccounts', []);
-            const signer = provider.getSigner();
-      
-            // Create a new instance of your contract
-            const contract = new ethers.Contract(contractAddress, abi, signer);
-      
-            // Call the mintCertificate function
-            const transactionResult = await contract.mint({
-                gasLimit: 500000, // Adjust as needed
-            });
-            alert("Transaction submitted. Waiting for confirmation...");
-      
-            // Wait for the transaction to be mined
-           const receipt = await transactionResult.wait();  
-           setTxHash(receipt.transactionHash);
-            //alert("NFT Minted Successfully!");        
-
-             // ToFetch the minted NFT metadata
-              // Get latest token ID
-            const tokenId = await contract.getCurrentTokenId();
-
-            // Fetch the NFT metadata URI
-            let tokenURI = await contract.tokenURI(tokenId);
-
-            const ipfsGateway = "https://gateway.pinata.cloud/ipfs/";
-            if (tokenURI.startsWith("ipfs://")) {
-                tokenURI = tokenURI.replace("ipfs://", ipfsGateway);
-            }
+      try {
+          // Request account access if needed
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
+          await provider.send('eth_requestAccounts', []);
+          const signer = provider.getSigner();
     
-            // Fetch the metadata
-            const metadataResponse = await fetch(tokenURI);
-            const metadata = await metadataResponse.json();
+          // Create a new instance of your contract
+          const contract = new ethers.Contract(contractAddress, abi, signer);
     
-            // Set the image URL
-            let imageUrl = metadata.image;
-            if (imageUrl.startsWith("ipfs://")) {
-                imageUrl = imageUrl.replace("ipfs://", ipfsGateway);
-            }
-            setNftImage(imageUrl);
+          // Call the mintCertificate function
+          const transactionResult = await contract.mint({
+              gasLimit: 500000, // Adjust as needed
+          });
+          alert("Transaction submitted. Waiting for confirmation...");
+    
+          // Wait for the transaction to be mined
+          const receipt = await transactionResult.wait();  
+          setTxHash(receipt.transactionHash);
+          //alert("NFT Minted Successfully!");        
 
-             // Trigger confetti on successful mint
-             setShowConfetti(true);
-             setTimeout(() => setShowConfetti(false), 10000);
- 
-      
+            // ToFetch the minted NFT metadata
+            // Get latest token ID
+          const tokenId = await contract.getCurrentTokenId();
 
-          } catch (error: any) {
-            console.error("Minting failed:", error.reason);
-            // console.log(error.reason,"error")
-            setError(error.message);
-            // alert("Minting failed: " + error.message);
+          // Fetch the NFT metadata URI
+          let tokenURI = await contract.tokenURI(tokenId);
+
+          const ipfsGateway = "https://gateway.pinata.cloud/ipfs/";
+          if (tokenURI.startsWith("ipfs://")) {
+              tokenURI = tokenURI.replace("ipfs://", ipfsGateway);
           }
-          setFetching(false)
+
+          // Fetch the metadata
+          const metadataResponse = await fetch(tokenURI);
+          const metadata = await metadataResponse.json();
+
+          // Set the image URL
+          let imageUrl = metadata.image;
+          if (imageUrl.startsWith("ipfs://")) {
+              imageUrl = imageUrl.replace("ipfs://", ipfsGateway);
+          }
+          setNftImage(imageUrl);
+
+            // Trigger confetti on successful mint
+            setShowConfetti(true);
+            setTimeout(() => setShowConfetti(false), 10000);
+
+    
+
+        } catch (error: any) {
+          console.error("Minting failed:", error.reason);
+          // console.log(error.reason,"error")
+          setError(error.message);
+          // alert("Minting failed: " + error.message);
+        }
+        setFetching(false)
   };
 
   return (
