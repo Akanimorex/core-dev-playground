@@ -4,10 +4,12 @@ import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import {SRLWrapper} from 'simple-react-lightbox';
 
+
 import CodeBlock from './CodeBlock';
 import {GitbookHintType, gitbookHintTypeToAntd} from './utils/markdown-utils';
 import {extractStringFromTree, stringToCssId} from './utils/string-utils';
 import VideoPlayer from './VideoPlayer';
+import MintButton from '@core/MintButton';
 
 import {
   LinkIcon,
@@ -86,6 +88,12 @@ const Markdown = ({
           const {children} = props;
 
           const text = extractStringFromTree(props);
+
+
+          // Check for the mint button placeholder
+          if (typeof text === 'string' && text.trim() === '[MINT_BUTTON]') {
+            return <MintButton />;
+          }
 
           if (typeof text === 'string') {
             if (text.includes('{% hint')) {
